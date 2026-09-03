@@ -19,4 +19,4 @@ MPT_VOICE_NAME=ru-RU-DmitryNeural
 MPT_TIMEOUT_MINUTES=20
 ```
 
-Проверьте `GET /ping`, затем кнопка **🎬 Shorts** будет присылать MP4 вместо JSON.
+Проверьте `GET /docs`, затем кнопка **🎬 Shorts** будет присылать MP4 вместо JSON.
