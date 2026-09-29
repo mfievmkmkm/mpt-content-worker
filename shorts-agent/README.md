@@ -21,11 +21,11 @@ Telegram → очередь (1 ролик одновременно, до 4 ож�
          → личное превью в Telegram
 ```
 
-Один worker предохраняет CPU Railway и баланс от нескольких одновременных рендеров. Очередь находится в памяти и теряется при рестарте; для постоянного потока понадобится Postgres/Redis, записи статусов и отдельный worker. Код намеренно выделен в собственный Railway service, чтобы долгий рендер не мешал работающему Content OS.
+Один worker предохраняет CPU Railway и баланс от нескольких одновременных рендеров. Очередь находится в памяти и теряется при рестарте; для постоянного потока понадобится Postgres/Redis, записи статусов и отдельный worker. Код находится в отдельном репозитории и запускается отдельным Railway service, чтобы долгий рендер не мешал работающему Content OS.
 
 ## Запуск на Railway
 
-Создайте **отдельный service из этого репозитория** с Root Directory `shorts-agent` и Dockerfile внутри неё. Не меняйте Root Directory существующего сервиса. Для polling нужен один инстанс, без публичного домена.
+Создайте отдельный Railway service из этого репозитория с Root Directory `/shorts-agent`. Для polling нужен один инстанс, без публичного домена.
 
 Variables:
 
@@ -34,8 +34,8 @@ TELEGRAM_BOT_TOKEN=токен_нового_бота
 POLZA_API_KEY=ключ_polza
 ALLOWED_USER_IDS=ваш_числовой_Telegram_ID
 TEXT_MODEL=openai/gpt-4o-mini
-IMAGE_MODEL=dall-e-3
-IMAGE_SIZE=1024x1792
+IMAGE_MODEL=openai/gpt-image-1.5
+IMAGE_SIZE=1024x1536
 VOICE_MODEL=openai/gpt-4o-mini-tts
 VOICE=alloy
 ```
